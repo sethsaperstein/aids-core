@@ -189,24 +189,44 @@ The system runs locally with JSON-based storage and is designed to be extendable
 
 ## Setup and Installation
 
+### Prerequisites
+
+- Python 3.9 or higher
+- [Poetry](https://python-poetry.org/docs/#installation) (Python dependency management)
+- API keys for LLM providers (Anthropic, OpenAI, etc.)
+
+### Installation
+
+#### Option 1: Using the setup script (recommended)
+
+Run the setup script
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/entrepreneurial-agents.git
-cd entrepreneurial-agents
+./scripts/setup.sh
+```
+#### Option 2: Manual installation
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
+1. Install poetry and setup .env file
+```bash
+poetry install
 cp .env.example .env
-# Edit .env with your API keys and configuration
+```bash
 
-# Run the application
-python main.py
+2. Install extra poetry dependencies if needed
+
+poetry install --extras api
+poetry install --extras payments
+poetry install --extras cloud
+poetry install --extras communications
+poetry install --extras ml
+
+3. Activate the virtual environment
+```bash
+poetry shell
+```
+
+4. Run the application
+```bash
+python -m entrepreneurial_agents.main
 ```
 
 ## Configuration
